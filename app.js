@@ -1,10 +1,14 @@
-// Grab the necessary modules
+// Grab the necessary modules and grab express app
 const express = require('express'),
       app = express(),
       port = process.env.PORT || 8000;
 
+app.set('views', __dirname + '/views');
+app.set('view engine', 'pug');
+app.use(express.static(__dirname));
+
 app.get('/', (req, res) => {
-    res.end('poop');
+    res.render('index');
 });
 
 app.get('/:DATE', (req, res) => {

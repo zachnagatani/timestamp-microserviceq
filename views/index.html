@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale:1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="styles/main.css">
+    </head>
+    <body>
+        <main class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="jumbotron text-center">
+                        <h1>Timestamp Microservice API</h1>
+                    </div>
+                    <p>Congratulations! You've reached the root of this Timestamp Microservice API.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2>Usage</h2>
+                    <p>This API is super simple. It accepts with a UNIX timestamp (1450137600) or a natural language date (January 17, 1970).</p>
+                    <p>
+                        Simply append either one to the end of the URL, and you'll get something like this: <code>{"unix":1411200000,"natural":"January 17, 1970"}</code> in return.
+                    </p>
+                    <p>That's it!</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2>Example Calls</h2>
+                    <h3>Valid Calls:</h3>
+                    <p>The main rule to remember is the date passed in must be able to be correctly turned into a Javascript date object via <code>new Date()</code></p>
+                    <pre>
+                        // Unix Timestamp
+                        // returns {"unix":1450137600,"natural":"January 17, 1970"}
+                        fetch('http://localhost:8000/1450137600')...
+                    </pre>
+                    <pre>
+                        // Natural Language Date (URL encoded)
+                        // returns {"unix":1450137600,"natural":"January 17, 1970"}
+                        fetch('http://localhost:8000/January%2017,%201970')...
+                    </pre>
+                    <pre>
+                        // Natural Language Date (with spaces)
+                        // returns {"unix":1450137600,"natural":"January 17, 1970"}
+                        fetch('http://localhost:8000/January 17, 1970')...
+                    </pre>
+
+                    <h3>Invalid Calls</h3>
+                    <pre>
+                        // Gibberish...
+                        // Returns ^^
+                        fetch('http://localhost:8000/adsfasdfadsf')...
+                    </pre>
+                    <pre>
+                        // Invalid Date String
+                        // returns "Invalid date. Please enter a UNIX timestamp (ex 1450137600), or a natural language date (ex January 17, 1970)."
+                        fetch('http://localhost:8000/January 17th, 1970')...
+                    </pre>
+                    <pre>
+                        // Natural Language Date with no spaces or encoding
+                        // returns "Invalid date. Please enter a UNIX timestamp (ex 1450137600), or a natural language date (ex January 17, 1970)."
+                        fetch('http://localhost:8000/January17th,1970')...
+                    </pre>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
