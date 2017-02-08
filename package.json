@@ -4,7 +4,8 @@
   "description": "API that returns unix timestamps and natural language dates",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -27,7 +28,4 @@
   "engines": {
     "node": "6.9.1"
   },
-  "scripts": {
-    "start": "node app.js"
-  }
 }
