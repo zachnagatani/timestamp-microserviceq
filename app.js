@@ -3,9 +3,12 @@ const express = require('express'),
       app = express(),
       port = process.env.PORT || 8000;
 
-// Middleware to handle all requests, since this api has only one true endpoint.
-app.use((req, res) => {
-    const query = decodeURI(req.url.substr(1));
+app.get('/', (req, res) => {
+    res.end('poop');
+});
+
+app.get('/:DATE', (req, res) => {
+    const query = decodeURI(req.params.DATE);
     /**
      * @param {Object} date - a valid javascript Date object
      * @returns {Object} A javascript object containing the date converted into a unix timestamp and in natural language form (ex February 8, 2017)
@@ -70,7 +73,7 @@ app.use((req, res) => {
         const date = new Date(query);
         res.json(formatDate(date));
     } else {
-        res.writeHead(400);
+        res.status(400);
         res.end('Invalid date. Please enter a UNIX timestamp (ex 1450137600), or a natural language date (ex January 17, 1970).');
     }
 });
