@@ -1,0 +1,26 @@
+{
+  "name": "@zachnagatani/timestamp-microservice",
+  "version": "1.0.0",
+  "description": "API that returns unix timestamps and natural language dates",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zachnagatani/timestamp-microserviceq.git"
+  },
+  "keywords": [
+    "api"
+  ],
+  "author": "zachnagatani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zachnagatani/timestamp-microserviceq/issues"
+  },
+  "homepage": "https://github.com/zachnagatani/timestamp-microserviceq#readme",
+  "dependencies": {
+    "express": "^4.14.1"
+  },
+  "devDependencies": {}
+}
